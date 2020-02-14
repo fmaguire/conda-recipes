@@ -1,0 +1,37 @@
+{% set version = "3.2" %}
+{% set name = "resfinder" %}
+{% set sha256 = "b84783ac2255c1ed32723eea9288a9257e4f4589e777585409d701571b646f33" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+build:
+  number: 0
+  noarch: generic
+
+source:
+  url: https://bitbucket.org/genomicepidemiology/resfinder/get/{{ version }}.tar.gz
+  sha256: {{ sha256 }} 
+
+requirements:
+    run:
+        - cgecore
+        - tabulate
+        - kma
+        - blast
+        - biopython
+ 
+test:
+    commands:
+        - resfinder.py -h
+
+about:
+    home: https://bitbucket.org/genomicepidemiology/resfinder
+    license: Apache-2.0
+    license_family: APACHE
+    summary: "ResFinder allows identification of AMR genes"
+
+extra:
+    identifiers:
+        - doi: 10.1093/jac/dks261
