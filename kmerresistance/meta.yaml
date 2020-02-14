@@ -1,0 +1,37 @@
+{% set name = "kmerresistance" %}
+{% set version = "2.2.0" %}
+{% set sha256 = "189663dd1153b2b1fd26ebf79dc004901e93b8fc07264816ad3d284795554ff9" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://bitbucket.org/genomicepidemiology/kmerresistance/get/2.2.0.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - zlib
+    - kma
+  run:
+    - zlib
+    - kma
+  
+test:
+  commands:
+   - kmerresistance -h 
+
+about:
+  home: https://bitbucket.org/genomicepidemiology/kmerresistance
+  summary: 'KmerResistance correlates mapped genes with the predicted species of WGS samples, where this this allows for identification of genes in samples which have been poorly sequenced or high accuracy predictions for samples with contamination'
+  license: Apache-2.0
+extra:
+  identifiers:
+    - doi:10.1093/jac/dkw184
+    - doi:10.1186/s12859-018-2336-6
